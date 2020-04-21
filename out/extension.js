@@ -35,10 +35,12 @@ function activate(context) {
         // 	});
         // }
         (_b = vscode.window.activeTextEditor) === null || _b === void 0 ? void 0 : _b.edit(editBuilder => {
+            var _a;
             if (line_one_text !== undefined) {
                 let backPosition = new vscode.Position(0, line_one_text.length);
                 editBuilder.delete(new vscode.Range(frontPosition, backPosition));
-                editBuilder.insert(frontPosition, "-module(" + line_one_text + ").");
+                editBuilder.insert(frontPosition, "-module(" + line_one_text + ").\n-compile(export_all).");
+                (_a = vscode.window.activeTextEditor) === null || _a === void 0 ? void 0 : _a.document.save();
             }
             // editBuilder.replace(frontPosition, "-module(" + line_one_text + ").");
         });
