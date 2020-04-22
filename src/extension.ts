@@ -44,6 +44,7 @@ export function activate(context: vscode.ExtensionContext) {
 				editBuilder.delete(new vscode.Range(frontPosition,  backPosition));
 				editBuilder.insert(frontPosition, "-module(" + line_one_text + ").\n-compile(export_all).");
 				
+				vscode.window.activeTextEditor?.document.save();
 			}
 			// editBuilder.replace(frontPosition, "-module(" + line_one_text + ").");
 		});
